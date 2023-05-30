@@ -5,8 +5,6 @@ var quicksort1=document.getElementById("quick1");
 var bubblesort=document.getElementById("bubble");
 var selectionsort=document.getElementById("selection");
 var insertionsort=document.getElementById("insertion");
-var heapsort=document.getElementById("heap");
-var quicksort2=document.getElementById('quick2')
 var len ;
 len=slider.value;
 console.log(len)
@@ -66,13 +64,12 @@ function sleep(ms) {
 }
  bubblesort.addEventListener('click', async()=>{
     slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
+
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
     insertionsort.disabled=true
-    heapsort.disabled=true
+
     run=true;
     let child=area.childNodes;
     console.log(child[0])
@@ -101,23 +98,21 @@ function sleep(ms) {
         }
     }
     slider.disabled=false;
-    quicksort1.disabled=false;
-    quicksort2.disabled=false;
+
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
     insertionsort.disabled=false
-    heapsort.disabled=false  
+  
 });
 selectionsort.addEventListener('click', async()=>{
     slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
+
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
     insertionsort.disabled=true
-    heapsort.disabled=true
+
     run=true;
     let child=area.childNodes;
     console.log(child[0])
@@ -156,35 +151,33 @@ selectionsort.addEventListener('click', async()=>{
     }
     slider.disabled=false;
     quicksort1.disabled=false;
-    quicksort2.disabled=false;
+
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
     insertionsort.disabled=false
-    heapsort.disabled=false  
+   
 });
 mergeSort.addEventListener('click', async ()=>{
     slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
+
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
     insertionsort.disabled=true
-    heapsort.disabled=true
+
     run=true;
     let child=area.childNodes;
     console.log(child[0])
     run=true
     await merge(0,len-1);
     slider.disabled=false;
-    quicksort1.disabled=false;
-    quicksort2.disabled=false;
+
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
     insertionsort.disabled=false
-    heapsort.disabled=false        
+       
 
 })
 
@@ -258,13 +251,10 @@ async function mergesort(l,mid,r)
 insertionsort.addEventListener('click',async ()=>{
     let key;
     slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
     insertionsort.disabled=true
-    heapsort.disabled=true
     run=true;
     run=true;
     let child=area.childNodes;
@@ -292,269 +282,11 @@ insertionsort.addEventListener('click',async ()=>{
         child[j+1].style.height=(key*10)+"px"
         array[j+1]=key;
     }
-    slider.disabled=false;
-    quicksort1.disabled=false;
-    quicksort2.disabled=false;
-    mergeSort.disabled=false
-    bubblesort.disabled=false
-    selectionsort.disabled=false
-    insertionsort.disabled=false
-    heapsort.disabled=false  
-})
 
-quicksort1.addEventListener('click',async ()=>{
-    slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
-    mergeSort.disabled=true
-    bubblesort.disabled=true
-    selectionsort.disabled=true
-    insertionsort.disabled=true
-    heapsort.disabled=true
-    run=true;
-    console.log(array)
-    await quickSort(0,len-1);
-    console.log(array)
-    slider.disabled=false;
-    quicksort1.disabled=false;
-    quicksort2.disabled=false;
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
     insertionsort.disabled=false
-    heapsort.disabled=false  
 
 })
-quicksort2.addEventListener('click',async ()=>{
-    slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
-    mergeSort.disabled=true
-    bubblesort.disabled=true
-    selectionsort.disabled=true
-    insertionsort.disabled=true
-    heapsort.disabled=true
-    run=true;
-    console.log(array)
-    await quickSort1(0,len-1);
-    console.log(array)
-    slider.disabled=false;
-    quicksort1.disabled=false;
-    quicksort2.disabled=false;
-    mergeSort.disabled=false
-    bubblesort.disabled=false
-    selectionsort.disabled=false
-    insertionsort.disabled=false
-    heapsort.disabled=false  
-
-})
-async function quickSort(l,r)
-{
-    
-    if(l<=r)
-    {
-        let child=area.childNodes;
-        let pivot=await qsort(l,r);
-        if(run===false)
-        {
-            await pauseAnimation();
-        }
-        child[pivot].style.backgroundColor="blue";
-        await quickSort(l,pivot-1);
-        await quickSort(pivot+1,r);
-    }
-    
-}
-async function quickSort1(l,r)
-{
-    
-    if(l<=r)
-    {
-        let child=area.childNodes;
-        let pivot=await qsort1(l,r);
-        if(run===false)
-        {
-            await pauseAnimation();
-        }
-        child[pivot].style.backgroundColor="blue";
-        await quickSort1(l,pivot-1);
-        await quickSort1(pivot+1,r);
-    }
-    
-}
-async function qsort1(l,r,pivot)
-{
-    let key=array[l];
-    let index=l;
-    let child=area.childNodes;
-    child[l].style.backgroundColor="red"
-    child[r].style.backgroundColor="red"
-    await sleep(10);
-    child[l].style.backgroundColor="green";
-    child[r].style.backgroundColor="green"
-    let i=l;
-    let j=r;
-    while(i<=j)
-    {
-        while(array[i]<=key)i++;
-        while(array[j]>key)j--;
-        if(i<j)
-        {
-            child[i].style.backgroundColor="black";
-            child[i].style.backgroundColor="yellow"
-            await sleep(10);
-            let t=array[i];
-            array[i]=array[j];
-            array[j]=t;
-            child[i].style.height=(array[i]*10)+"px";
-            child[j].style.height=(array[j]*10)+"px";
-            
-            child[i].style.backgroundColor = "green";
-            child[j].style.backgroundColor = "green";
-        }
-    }
-    let t=array[l]
-    array[l]=array[j];
-    array[j]=t;
-    child[l].style.height=(array[l]*10)+"px";
-    child[j].style.height=(array[j]*10)+"px";
-    await sleep(10);
-    return j;
-}
-async function qsort(l,r,pivot)
-{
-    let key=array[r];
-    let index=l;
-    let child=area.childNodes;
-    for(let i=l;i<r;i++)
-    {
-        
-        child[index].style.backgroundColor="red"
-        child[i].style.backgroundColor="yellow"
-        if(run===false)
-        {
-            await pauseAnimation();
-        }
-        await sleep(10);
-        child[i].style.backgroundColor="green";
-        child[index].style.backgroundColor="green"
-        if(array[i]<key)
-        {
-            let temp=array[index];
-            array[index]=array[i];
-            array[i]=temp;
-            child[index].style.height=(array[index]*10)+"px";
-            child[i].style.height=(array[i]*10)+"px";
-            index++;
-        }
-        child[i].style.backgroundColor=pivot
-        
-    }
-    [array[index], array[r]] = [array[r], array[index]]
-    child[index].style.height=(array[index]*10)+"px";
-    child[r].style.height=(array[r]*10)+"px";
-    child[r].style.backgroundColor=pivot
-    return index;
-}
-let arrLength=0;
-heapsort.addEventListener('click',async()=>{
-    slider.disabled=true;
-    quicksort1.disabled=true;
-    quicksort2.disabled=true;
-    mergeSort.disabled=true
-    bubblesort.disabled=true
-    selectionsort.disabled=true
-    insertionsort.disabled=true
-    heapsort.disabled=true
-    run=true;
-    console.log(array)
-    await heapSort();
-    console.log(array)
-    slider.disabled=false;
-    quicksort1.disabled=false;
-    quicksort2.disabled=false;
-    mergeSort.disabled=false
-    bubblesort.disabled=false
-    selectionsort.disabled=false
-    insertionsort.disabled=false
-    heapsort.disabled=false  
-});
-async function maxHeap(index,n)
-{
-    let child=area.childNodes;
-    let l=2*index+1;
-    let r=2*index+2;
-    
-    let max=index;
-
-    console.log(n)
-    
-    
-    if(l<n&&array[l]>array[max])
-    {
-        child[l].style.backgroundColor="yellow"
-        if(run===false)
-        {
-            await pauseAnimation();
-        }
-
-        await sleep(10);
-        child[l].style.backgroundColor="green"
-        max=l;
-    }
-    if(r<n&&array[r]>array[max])
-    {
-        child[r].style.backgroundColor="red"
-        if(run===false)
-        {
-            await pauseAnimation();
-        }
-        await sleep(10);
-        child[r].style.backgroundColor="green"
-        max=r;
-    }
-    if(max!=index)
-    {
-        let temp=array[max];
-        array[max]=array[index];
-        array[index]=temp;
-        child[max].style.height=(array[max]*10)+"px";
-        child[index].style.height=(array[index]*10)+"px";
-        await maxHeap(max,n);
-    }
-}
-async function heapSort()
-{
-    let n = array.length
-    let child=area.childNodes;
-    if(run===false)
-        {
-            await pauseAnimation();
-        }
-    for (let i = Math.floor(n / 2); i >= 0; i -= 1)      {
-        await maxHeap( i,n)
-      }
-      await sleep(10);
-    for (i = array.length - 1; i > 0; i--) {
-
-        child[i].style.backgroundColor="blue"
-        let temp=array[0];
-        array[0]=array[i];
-        array[i]=temp;
-        child[0].style.height=(array[0]*10)+"px";
-        child[i].style.height=(array[i]*10)+"px";
-        
-        n--
-        await maxHeap( 0,n)
-    }
-    if(run===false)
-        {
-            await pauseAnimation();
-        }
-    child[0].style.backgroundColor="blue"
-}
-
-    
-
-
 
