@@ -64,12 +64,9 @@ function sleep(ms) {
 }
  bubblesort.addEventListener('click', async()=>{
     slider.disabled=true;
-
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
-    insertionsort.disabled=true
-
     run=true;
     let child=area.childNodes;
     console.log(child[0])
@@ -94,7 +91,6 @@ function sleep(ms) {
             await pauseAnimation();
             child[j].style.backgroundColor = "blue";
             child[j + 1].style.backgroundColor = "blue";
-
         }
     }
     slider.disabled=false;
@@ -102,17 +98,12 @@ function sleep(ms) {
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
-    insertionsort.disabled=false
-  
 });
 selectionsort.addEventListener('click', async()=>{
     slider.disabled=true;
-
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
-    insertionsort.disabled=true
-
     run=true;
     let child=area.childNodes;
     console.log(child[0])
@@ -151,34 +142,24 @@ selectionsort.addEventListener('click', async()=>{
     }
     slider.disabled=false;
     quicksort1.disabled=false;
-
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
-    insertionsort.disabled=false
-   
 });
 mergeSort.addEventListener('click', async ()=>{
     slider.disabled=true;
-
     mergeSort.disabled=true
     bubblesort.disabled=true
     selectionsort.disabled=true
-    insertionsort.disabled=true
-
     run=true;
     let child=area.childNodes;
     console.log(child[0])
     run=true
     await merge(0,len-1);
     slider.disabled=false;
-
     mergeSort.disabled=false
     bubblesort.disabled=false
     selectionsort.disabled=false
-    insertionsort.disabled=false
-       
-
 })
 
 async function merge(l,r){
@@ -247,46 +228,4 @@ async function mergesort(l,mid,r)
         child[i].style.height=(array[i]*10)+"px";
     }
 }
-
-insertionsort.addEventListener('click',async ()=>{
-    let key;
-    slider.disabled=true;
-    mergeSort.disabled=true
-    bubblesort.disabled=true
-    selectionsort.disabled=true
-    insertionsort.disabled=true
-    run=true;
-    run=true;
-    let child=area.childNodes;
-    for(let i=1;i<array.length;i++)
-    {
-        let j=i-1;
-        key=array[i];
-        child[i].style.backgroundColor="yellow";
-        while(j>=0&&array[j]>key)
-        {
-            child[j].style.backgroundColor="red"
-            
-                array[j+1]=array[j];
-                child[j+1].style.height=(array[j]*10)+"px";
-            if(run===false)
-            {
-                await pauseAnimation();
-            }
-            await sleep(10);
-            child[j].style.backgroundColor="blue"
-            j--;
-            
-        }
-        child[i].style.backgroundColor="blue";
-        child[j+1].style.height=(key*10)+"px"
-        array[j+1]=key;
-    }
-
-    mergeSort.disabled=false
-    bubblesort.disabled=false
-    selectionsort.disabled=false
-    insertionsort.disabled=false
-
-})
 
